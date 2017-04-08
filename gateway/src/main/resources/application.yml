@@ -1,0 +1,25 @@
+ribbon:
+  eureka:
+    enabled: false
+
+zuul:
+  routes:
+
+    paymentGroups:
+      path: /tbcibs-play/**/paymentGroups
+      url: http://localhost:8082
+    paymentRegions:
+      path: /tbcibs-play/**/paymentRegions
+      url: http://localhost:8082
+    billPayments:
+      sensitiveHeaders:
+      path: /tbcibs-play/**/billPayments
+      url: http://localhost:8082
+    legacy:
+      sensitiveHeaders:
+      path: /tbcibs-play/**
+      strip-prefix: false
+      url: http://10.2.11.13:9082
+
+server:
+  port: 8081
