@@ -1,4 +1,4 @@
-package cz.codingmonkey.proxy.filters;
+package cz.codingmonkey.proxy.filters.pre;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author rstefanca
  */
-public class SimpleFilter extends ZuulFilter {
+public class LogFilter extends ZuulFilter {
 
-	private static Logger log = LoggerFactory.getLogger(SimpleFilter.class);
+	private static Logger log = LoggerFactory.getLogger(LogFilter.class);
 
 	@Override
 	public String filterType() {

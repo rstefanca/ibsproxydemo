@@ -2,11 +2,13 @@ package cz.codingmonkey.utiltitypayment.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
+
 /**
  * @author rstefanca
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserInfo {
+public class UserInfo implements Serializable {
 
 	private String firstName;
 	private String lastName;

@@ -15,9 +15,19 @@ zuul:
       sensitiveHeaders:
       path: /tbcibs-play/**/billPayments
       url: http://localhost:8082
+    billPaymentsOrder:
+      sensitiveHeaders:
+      path: /tbcibs-play/**/billPayments/order
+      url: http://localhost:8082
+    ui:
+      path: /dev/**
+      sensitiveHeaders:
+      strip-prefix: false
+      url: http://localhost:9000
+
     legacy:
       sensitiveHeaders:
-      path: /tbcibs-play/**
+      path: /**
       strip-prefix: false
       url: http://10.2.11.13:9082
 
