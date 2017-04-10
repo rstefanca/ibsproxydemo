@@ -22,11 +22,11 @@ public class UtilityPaymentService {
 	private PaymentOrderService paymentOrderService;
 
 	@Autowired
-	private FrequentPaymentService frequentPaymentService;
+	private FrequentPaymentClient frequentPaymentClient;
 
 	public List<FrequentPayment> getFrequentPayments(String clientId) {
 		List<Integer> paymentListOrder = paymentOrderService.getPaymentListOrder(123456);
-		List<FrequentPayment> payments = frequentPaymentService.getFrequentPaymentList(Integer.parseInt(clientId), "IBS");
+		List<FrequentPayment> payments = frequentPaymentClient.getFrequentPaymentList(Integer.parseInt(clientId), "IBS");
 		HashMap<Integer, FrequentPayment> map = new HashMap<>(payments.size());
 		for (FrequentPayment payment : payments) {
 			map.put(payment.id, payment);

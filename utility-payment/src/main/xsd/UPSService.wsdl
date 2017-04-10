@@ -1,0 +1,1192 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name='PaymentWebServices' targetNamespace='http://ps.ups.azry.com' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:ns1='http://fiws.ups.azry.com' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://ps.ups.azry.com' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <xs:schema targetNamespace='http://ps.ups.azry.com' version='1.0' xmlns:ns1='http://fiws.ups.azry.com' xmlns:tns='http://ps.ups.azry.com' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+   <xs:import namespace='http://fiws.ups.azry.com'/>
+   <xs:element name='AdditionalParams' type='tns:DataEntry'/>
+   <xs:element name='addDirectDebitOrder' type='tns:addDirectDebitOrder'/>
+   <xs:element name='addDirectDebitOrderResponse' type='tns:addDirectDebitOrderResponse'/>
+   <xs:element name='addPaymentList' nillable='true'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element form='qualified' minOccurs='0' name='Customer' nillable='true' type='tns:Customer'/>
+      <xs:element form='qualified' minOccurs='0' name='FiCustomerId' nillable='true' type='xs:int'/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='addPaymentListEntry' type='tns:addPaymentListEntry'/>
+   <xs:element name='addPaymentListEntryResponse' type='tns:addPaymentListEntryResponse'/>
+   <xs:element name='addPaymentListResponse' type='tns:addPaymentListResponse'/>
+   <xs:element name='anonymousDebtVerify' type='tns:anonymousDebtVerify'/>
+   <xs:element name='anonymousDebtVerifyResponse' type='tns:anonymousDebtVerifyResponse'/>
+   <xs:element name='cancelDirectDebitOrder' type='tns:cancelDirectDebitOrder'/>
+   <xs:element name='cancelDirectDebitOrderResponse' type='tns:cancelDirectDebitOrderResponse'/>
+   <xs:element name='debtVerify' nillable='true'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element form='qualified' name='ProductId' type='xs:int'/>
+      <xs:element form='qualified' name='PaymentIdentifier' type='xs:string'/>
+      <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='AdditionalParams' nillable='true' type='tns:DataEntry'/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='debtVerifyResponse' type='tns:debtVerifyResponse'/>
+   <xs:element name='deletePaymentListEntry' type='tns:deletePaymentListEntry'/>
+   <xs:element name='deletePaymentListEntryResponse' type='tns:deletePaymentListEntryResponse'/>
+   <xs:element name='editDirectDebitOrder' type='tns:editDirectDebitOrder'/>
+   <xs:element name='editDirectDebitOrderResponse' type='tns:editDirectDebitOrderResponse'/>
+   <xs:element name='editPaymentListEntry' type='tns:editPaymentListEntry'/>
+   <xs:element name='editPaymentListEntryResponse' type='tns:editPaymentListEntryResponse'/>
+   <xs:element name='getAllClientDirectDebitOrdersSummaryAmounts' type='tns:getAllClientDirectDebitOrdersSummaryAmounts'/>
+   <xs:element name='getAllClientDirectDebitOrdersSummaryAmountsResponse' type='tns:getAllClientDirectDebitOrdersSummaryAmountsResponse'/>
+   <xs:element name='getClientChargeRates' type='tns:getClientChargeRates'/>
+   <xs:element name='getClientChargeRatesResponse' type='tns:getClientChargeRatesResponse'/>
+   <xs:element name='getCustomerPaymentList' nillable='true'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element form='qualified' minOccurs='0' name='PersonalNumber' nillable='true' type='xs:string'/>
+      <xs:element form='qualified' minOccurs='0' name='IdentificationCode' nillable='true' type='xs:string'/>
+      <xs:element form='qualified' minOccurs='0' name='FiCustomerId' nillable='true' type='xs:int'/>
+      <xs:element form='qualified' minOccurs='0' name='ProductId' nillable='true' type='xs:int'/>
+      <xs:element form='qualified' minOccurs='0' name='ChannelId' nillable='true' type='xs:int'/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='getCustomerPaymentListResponse' type='tns:getCustomerPaymentListResponse'/>
+   <xs:element name='getDirectDebitOrderSummaryAmounts' type='tns:getDirectDebitOrderSummaryAmounts'/>
+   <xs:element name='getDirectDebitOrderSummaryAmountsResponse' type='tns:getDirectDebitOrderSummaryAmountsResponse'/>
+   <xs:element name='getDirectDebitOrders' type='tns:getDirectDebitOrders'/>
+   <xs:element name='getDirectDebitOrdersResponse' type='tns:getDirectDebitOrdersResponse'/>
+   <xs:element name='getPaymentCommission' nillable='true'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+      <xs:element form='qualified' name='Amount' type='xs:float'/>
+      <xs:element form='qualified' name='SourceAccountId' type='xs:int'/>
+      <xs:element form='qualified' minOccurs='0' name='SourceAccountIBAN' nillable='true' type='xs:string'/>
+      <xs:element form='qualified' minOccurs='0' name='Currency' nillable='true' type='xs:string'/>
+      <xs:element form='qualified' minOccurs='0' name='FiCustomerId' nillable='true' type='xs:int'/>
+      <xs:element form='qualified' name='ProductId' type='xs:int'/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='getPaymentCommissionResponse' type='tns:getPaymentCommissionResponse'/>
+   <xs:element name='getPaymentGroupIcon' nillable='true'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+      <xs:element form='qualified' name='PaymentGroupId' nillable='true' type='xs:int'/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='getPaymentGroupIconResponse' type='tns:getPaymentGroupIconResponse'/>
+   <xs:element name='getPaymentGroups' type='tns:getPaymentGroups'/>
+   <xs:element name='getPaymentGroupsResponse' type='tns:getPaymentGroupsResponse'/>
+   <xs:element name='getPaymentInfo' type='tns:getPaymentInfo'/>
+   <xs:element name='getPaymentInfoResponse' type='tns:getPaymentInfoResponse'/>
+   <xs:element name='getPaymentProductIcon' nillable='true'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+      <xs:element form='qualified' name='PaymentProductId' nillable='true' type='xs:int'/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='getPaymentProductIconResponse' type='tns:getPaymentProductIconResponse'/>
+   <xs:element name='getPaymentProducts' nillable='true'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+      <xs:element form='qualified' minOccurs='0' name='CustomerType' nillable='true' type='tns:CustomerType'/>
+      <xs:element form='qualified' minOccurs='0' name='PaymentRegionId' nillable='true' type='xs:int'/>
+      <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='PaymentGroupId' nillable='true' type='xs:int'/>
+      <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='ServiceProviderId' nillable='true' type='xs:int'/>
+      <xs:element form='qualified' minOccurs='0' name='OnlyDirectDebitProducts' nillable='true' type='xs:boolean'/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='getPaymentProductsResponse' type='tns:getPaymentProductsResponse'/>
+   <xs:element name='getPaymentRegions' nillable='true'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+      <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='PaymentGroupId' nillable='true' type='xs:int'/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='getPaymentRegionsResponse' type='tns:getPaymentRegionsResponse'/>
+   <xs:element name='getServiceProviderIcon' type='tns:getServiceProviderIcon'/>
+   <xs:element name='getServiceProviderIconResponse' type='tns:getServiceProviderIconResponse'/>
+   <xs:element name='getServiceProviders' nillable='true'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+      <xs:element form='qualified' minOccurs='0' name='CustomerType' nillable='true' type='tns:CustomerType'/>
+      <xs:element form='qualified' minOccurs='0' name='PaymentRegionId' nillable='true' type='xs:int'/>
+      <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='PaymentGroupId' nillable='true' type='xs:int'/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='getServiceProvidersResponse' type='tns:getServiceProvidersResponse'/>
+   <xs:element name='requestPayment' nillable='true'>
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+      <xs:element form='qualified' name='ProductId' type='xs:int'/>
+      <xs:element form='qualified' name='AgentPaymentId' type='xs:string'/>
+      <xs:element form='qualified' name='PaymentIdentifier' type='xs:string'/>
+      <xs:element form='qualified' name='Amount' type='xs:float'/>
+      <xs:element form='qualified' name='Commission' type='xs:float'/>
+      <xs:element form='qualified' minOccurs='0' name='Currency' nillable='true' type='xs:string'/>
+      <xs:element form='qualified' minOccurs='0' name='Customer' nillable='true' type='tns:Customer'/>
+      <xs:element form='qualified' minOccurs='0' name='FiCustomerId' nillable='true' type='xs:int'/>
+      <xs:element form='qualified' minOccurs='0' name='CustomerIdDocument' nillable='true' type='tns:IdDocument'/>
+      <xs:element form='qualified' minOccurs='0' name='SourceAccountId' nillable='true' type='xs:int'/>
+      <xs:element form='qualified' minOccurs='0' name='SourceAccountIBAN' nillable='true' type='xs:string'/>
+      <xs:element form='qualified' minOccurs='0' name='HelperAccountId' nillable='true' type='xs:int'/>
+      <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='AdditionalParams' nillable='true' type='tns:DataEntry'/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name='requestPaymentResponse' type='tns:requestPaymentResponse'/>
+   <xs:complexType name='CustomerType'>
+    <xs:sequence>
+     <xs:element name='customerTypeId' type='xs:string'/>
+     <xs:element name='name' type='xs:string'/>
+     <xs:element minOccurs='0' name='parentTypeId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getPaymentProductsResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='PaymentProduct' type='ns1:PaymentProduct'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='Amount'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='amount' type='xs:float'/>
+     <xs:element name='currency' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getPaymentRegionsResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='PaymentRegion' type='ns1:PaymentRegion'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getServiceProvidersResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='ServiceProvider' type='ns1:ServiceProvider'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getPaymentGroups'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getPaymentGroupsResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='PaymentGroup' type='ns1:PaymentGroup'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getPaymentInfo'>
+    <xs:sequence>
+     <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+     <xs:element form='qualified' minOccurs='0' name='AgentPaymentId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getPaymentInfoResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='PaymentInfo' type='ns1:PaymentInfo'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='editDirectDebitOrder'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='DirectDebitOrder' type='ns1:DirectDebitOrder'/>
+     <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='editDirectDebitOrderResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='DataEntry'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='key' type='xs:string'/>
+     <xs:element form='qualified' minOccurs='0' name='value' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='debtVerifyResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='DebtVerifyInfo' type='ns1:DebtVerifyInfo'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getPaymentProductIconResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='PaymentProductIcon' type='xs:base64Binary'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getDirectDebitOrders'>
+    <xs:sequence>
+     <xs:element form='qualified' name='FiCustomerId' type='xs:int'/>
+     <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getDirectDebitOrdersResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='DirectDebitOrder' type='ns1:DirectDebitOrder'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='addDirectDebitOrder'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='DirectDebitOrder' type='ns1:DirectDebitOrder'/>
+     <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='addDirectDebitOrderResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' name='DirectDebitOrderId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='cancelDirectDebitOrder'>
+    <xs:sequence>
+     <xs:element form='qualified' name='DirectDebitOrderId' type='xs:int'/>
+     <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='cancelDirectDebitOrderResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getAllClientDirectDebitOrdersSummaryAmounts'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='FromDate' type='xs:dateTime'/>
+     <xs:element form='qualified' name='FiCustomerId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getAllClientDirectDebitOrdersSummaryAmountsResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='AllClientDirectDebitOrdersSummaryAmountsInfo' type='tns:AllClientDirectDebitOrdersSummaryAmountsInfo'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='AllClientDirectDebitOrdersSummaryAmountsInfo'>
+    <xs:sequence>
+     <xs:element name='year' type='xs:long'/>
+     <xs:element name='month' type='xs:long'/>
+     <xs:element minOccurs='0' name='amount' type='xs:decimal'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getDirectDebitOrderSummaryAmounts'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='FromDate' type='xs:dateTime'/>
+     <xs:element form='qualified' name='DirectDebitOrderId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getDirectDebitOrderSummaryAmountsResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='DirectDebitOrderSummaryAmountsInfo' type='tns:DirectDebitOrderSummaryAmountsInfo'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='DirectDebitOrderSummaryAmountsInfo'>
+    <xs:sequence>
+     <xs:element name='year' type='xs:long'/>
+     <xs:element name='month' type='xs:long'/>
+     <xs:element minOccurs='0' name='amount' type='xs:decimal'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='anonymousDebtVerify'>
+    <xs:sequence>
+     <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='PaymentGroupId' type='xs:int'/>
+     <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='PaymentProductId' type='xs:int'/>
+     <xs:element form='qualified' minOccurs='0' name='PaymentIdentifier' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='anonymousDebtVerifyResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='DebtVerifyInfo' type='ns1:DebtVerifyInfo'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='Customer'>
+    <xs:sequence>
+     <xs:element name='fiCustomerId' type='xs:int'/>
+     <xs:element name='legalPerson' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='identificationCode' type='xs:string'/>
+     <xs:element name='name' type='xs:string'/>
+     <xs:element name='nameEn' type='xs:string'/>
+     <xs:element minOccurs='0' name='firstName' type='xs:string'/>
+     <xs:element minOccurs='0' name='middleName' type='xs:string'/>
+     <xs:element minOccurs='0' name='lastName' type='xs:string'/>
+     <xs:element minOccurs='0' name='personalNumber' type='xs:string'/>
+     <xs:element minOccurs='0' name='birthDate' type='xs:date'/>
+     <xs:element minOccurs='0' name='birthPlace' type='xs:string'/>
+     <xs:element minOccurs='0' name='citizenship' type='xs:string'/>
+     <xs:element minOccurs='0' name='country' type='xs:string'/>
+     <xs:element minOccurs='0' name='city' type='xs:string'/>
+     <xs:element minOccurs='0' name='phone' type='xs:string'/>
+     <xs:element minOccurs='0' name='mobilePhone' type='xs:string'/>
+     <xs:element minOccurs='0' name='address' type='xs:string'/>
+     <xs:element minOccurs='0' name='addressLat' type='xs:string'/>
+     <xs:element minOccurs='0' name='actualAddress' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='accounts' nillable='true' type='tns:Account'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='idDocuments' nillable='true' type='tns:IdDocument'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='customerAttributes' nillable='true' type='tns:CustomerAttribute'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='customerTypes' nillable='true' type='tns:CustomerType'/>
+     <xs:element name='suspicious' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='Account'>
+    <xs:sequence>
+     <xs:element name='accountId' type='xs:int'/>
+     <xs:element name='bankCode' type='xs:string'/>
+     <xs:element name='bankName' type='xs:string'/>
+     <xs:element name='number' type='xs:string'/>
+     <xs:element name='currency' type='xs:string'/>
+     <xs:element name='office' type='tns:Office'/>
+     <xs:element name='name' type='xs:string'/>
+     <xs:element name='type' type='tns:AccountType'/>
+     <xs:element name='status' type='tns:AccountStatus'/>
+     <xs:element minOccurs='0' name='balance' type='tns:Amount'/>
+     <xs:element minOccurs='0' name='balanceAccount' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='Office'>
+    <xs:sequence>
+     <xs:element name='officeId' type='xs:int'/>
+     <xs:element name='name' type='xs:string'/>
+     <xs:element name='nameEn' type='xs:string'/>
+     <xs:element name='code' type='xs:string'/>
+     <xs:element name='acronym' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='AccountType'>
+    <xs:sequence>
+     <xs:element name='number' type='xs:string'/>
+     <xs:element name='name' type='xs:string'/>
+     <xs:element minOccurs='0' name='parentTypeNumber' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='AccountStatus'>
+    <xs:sequence>
+     <xs:element name='accountStatusId' type='xs:string'/>
+     <xs:element name='name' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='IdDocument'>
+    <xs:sequence>
+     <xs:element name='idDocumentType' type='tns:IdDocumentType'/>
+     <xs:element minOccurs='0' name='series' type='xs:string'/>
+     <xs:element name='number' type='xs:string'/>
+     <xs:element name='issueDate' type='xs:date'/>
+     <xs:element name='expireDate' type='xs:date'/>
+     <xs:element name='issuer' type='xs:string'/>
+     <xs:element name='country' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='IdDocumentType'>
+    <xs:sequence>
+     <xs:element name='idDocumentTypeId' type='xs:string'/>
+     <xs:element name='name' type='xs:string'/>
+     <xs:element name='nameEn' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='CustomerAttribute'>
+    <xs:sequence>
+     <xs:element name='name' type='xs:string'/>
+     <xs:element name='description' type='xs:string'/>
+     <xs:element name='onlyOneValue' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='possibleValues' type='xs:string'/>
+     <xs:element minOccurs='0' name='type' type='tns:CustomerAttributeType'/>
+     <xs:element minOccurs='0' name='value' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='requestPaymentResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getPaymentCommissionResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' name='Amount' type='xs:float'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getClientChargeRates'>
+    <xs:sequence>
+     <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getClientChargeRatesResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' maxOccurs='unbounded' minOccurs='0' name='ChargeRate' type='tns:ChargeRate'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='ChargeRate'>
+    <xs:sequence>
+     <xs:element name='paymentProductId' type='xs:int'/>
+     <xs:element name='fixedRate' type='xs:float'/>
+     <xs:element name='percentRate' type='xs:float'/>
+     <xs:element minOccurs='0' name='minCommission' type='xs:float'/>
+     <xs:element minOccurs='0' name='maxCommission' type='xs:float'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='addPaymentListResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' name='PaymentListId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='addPaymentListEntry'>
+    <xs:sequence>
+     <xs:element form='qualified' name='PaymentListId' type='xs:int'/>
+     <xs:element form='qualified' name='ProductId' type='xs:int'/>
+     <xs:element form='qualified' minOccurs='0' name='PaymentIdentifier' type='xs:string'/>
+     <xs:element form='qualified' minOccurs='0' name='Description' type='xs:string'/>
+     <xs:element form='qualified' minOccurs='0' name='IsOwnPaymentIdentifier' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='addPaymentListEntryResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' name='PaymentListEntryId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='editPaymentListEntry'>
+    <xs:sequence>
+     <xs:element form='qualified' name='PaymentListId' type='xs:int'/>
+     <xs:element form='qualified' name='PaymentListEntryId' type='xs:int'/>
+     <xs:element form='qualified' name='ProductId' type='xs:int'/>
+     <xs:element form='qualified' minOccurs='0' name='PaymentIdentifier' type='xs:string'/>
+     <xs:element form='qualified' minOccurs='0' name='Description' type='xs:string'/>
+     <xs:element form='qualified' minOccurs='0' name='IsOwnPaymentIdentifier' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='editPaymentListEntryResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='deletePaymentListEntry'>
+    <xs:sequence>
+     <xs:element form='qualified' name='PaymentListId' type='xs:int'/>
+     <xs:element form='qualified' name='PaymentListEntryId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='deletePaymentListEntryResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='getCustomerPaymentListResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='PaymentList' type='ns1:PaymentList'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getPaymentGroupIconResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='PaymentGroupIcon' type='xs:base64Binary'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getServiceProviderIcon'>
+    <xs:sequence>
+     <xs:element form='qualified' name='ChannelId' type='xs:int'/>
+     <xs:element form='qualified' name='ServiceProviderId' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getServiceProviderIconResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='ServiceProviderIcon' type='xs:base64Binary'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name='CustomerAttributeType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='STRING'/>
+     <xs:enumeration value='INTEGER'/>
+     <xs:enumeration value='FLOAT'/>
+     <xs:enumeration value='BOOLEAN'/>
+     <xs:enumeration value='DATE'/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:schema>
+  <xs:schema elementFormDefault='qualified' targetNamespace='http://fiws.ups.azry.com' version='1.0' xmlns:ns1='http://ps.ups.azry.com' xmlns:tns='http://fiws.ups.azry.com' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+   <xs:import namespace='http://ps.ups.azry.com'/>
+   <xs:complexType name='PaymentProduct'>
+    <xs:sequence>
+     <xs:element name='paymentProductId' type='xs:int'/>
+     <xs:element name='name' type='xs:string'/>
+     <xs:element name='nameEn' type='xs:string'/>
+     <xs:element name='code' type='xs:string'/>
+     <xs:element name='description' type='xs:string'/>
+     <xs:element name='descriptionEn' type='xs:string'/>
+     <xs:element name='shortName' type='xs:string'/>
+     <xs:element name='allRegions' type='xs:boolean'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='paymentRegions' nillable='true' type='tns:PaymentRegion'/>
+     <xs:element name='paymentGroup' type='tns:PaymentGroup'/>
+     <xs:element minOccurs='0' name='minPaymentAmount' type='ns1:Amount'/>
+     <xs:element minOccurs='0' name='maxPaymentAmount' type='ns1:Amount'/>
+     <xs:element minOccurs='0' name='allowedPaymentAmounts' type='xs:string'/>
+     <xs:element minOccurs='0' name='allowedMultipleByValue' type='xs:float'/>
+     <xs:element minOccurs='0' name='maxNumberOfCharacters' type='xs:int'/>
+     <xs:element name='useNumbers' type='xs:boolean'/>
+     <xs:element name='useAlpha' type='xs:boolean'/>
+     <xs:element name='charactersCanBeUsed' type='xs:boolean'/>
+     <xs:element name='spacesAllowed' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='instruction' type='xs:string'/>
+     <xs:element minOccurs='0' name='instructionEn' type='xs:string'/>
+     <xs:element name='allCustomerTypes' type='xs:boolean'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='customerTypes' nillable='true' type='ns1:CustomerType'/>
+     <xs:element name='oneTimePayment' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='serviceProvider' type='tns:ServiceProvider'/>
+     <xs:element name='treasuryCodeRequired' type='xs:boolean'/>
+     <xs:element name='phoneNumberIdentifier' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='offline' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='ddPaymentType' type='tns:PaymentType'/>
+     <xs:element minOccurs='0' name='ddVariablePaymentType' type='tns:VariablePaymentType'/>
+     <xs:element minOccurs='0' name='ddPriorityModifAllowed' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='ddComment' type='xs:string'/>
+     <xs:element minOccurs='0' name='ddCommentEn' type='xs:string'/>
+     <xs:element minOccurs='0' name='payOnlyDebtAmount' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='needsCertification' type='xs:boolean'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='parameters' nillable='true' type='tns:Param'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='PaymentRegion'>
+    <xs:sequence>
+     <xs:element name='paymentRegionId' type='xs:int'/>
+     <xs:element name='name' type='xs:string'/>
+     <xs:element name='nameEn' type='xs:string'/>
+     <xs:element name='telephoneCode' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='PaymentGroup'>
+    <xs:sequence>
+     <xs:element name='paymentGroupId' type='xs:int'/>
+     <xs:element name='name' type='xs:string'/>
+     <xs:element name='nameEn' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='ServiceProvider'>
+    <xs:sequence>
+     <xs:element name='serviceProviderId' type='xs:int'/>
+     <xs:element name='name' type='xs:string'/>
+     <xs:element name='nameEn' type='xs:string'/>
+     <xs:element name='shortName' type='xs:string'/>
+     <xs:element name='code' type='xs:string'/>
+     <xs:element minOccurs='0' name='legalName' type='xs:string'/>
+     <xs:element minOccurs='0' name='identificationCode' type='xs:string'/>
+     <xs:element minOccurs='0' name='phone' type='xs:string'/>
+     <xs:element minOccurs='0' name='address' type='xs:string'/>
+     <xs:element minOccurs='0' name='addressEn' type='xs:string'/>
+     <xs:element minOccurs='0' name='contactEmails' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='Param'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='key' type='xs:string'/>
+     <xs:element minOccurs='0' name='value' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='PaymentInfo'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='paymentStatus' type='tns:PaymentStatus'/>
+     <xs:element minOccurs='0' name='paymentTransactionsStatus' type='tns:PaymentTransactionsStatus'/>
+     <xs:element minOccurs='0' name='transactionFailMessage' type='xs:string'/>
+     <xs:element minOccurs='0' name='message' type='xs:string'/>
+     <xs:element minOccurs='0' name='statusCode' type='xs:int'/>
+     <xs:element minOccurs='0' name='spChargedCommission' type='ns1:Amount'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='DirectDebitOrder'>
+    <xs:sequence>
+     <xs:element name='directDebitOrderId' type='xs:int'/>
+     <xs:element minOccurs='0' name='fiCustomerId' type='xs:int'/>
+     <xs:element minOccurs='0' name='name' type='xs:string'/>
+     <xs:element minOccurs='0' name='nameEn' type='xs:string'/>
+     <xs:element minOccurs='0' name='startDate' type='xs:dateTime'/>
+     <xs:element minOccurs='0' name='endDate' type='xs:dateTime'/>
+     <xs:element minOccurs='0' name='paymentRegion' type='tns:PaymentRegion'/>
+     <xs:element minOccurs='0' name='paymentProduct' type='tns:PaymentProduct'/>
+     <xs:element minOccurs='0' name='paymentIdentifier' type='xs:string'/>
+     <xs:element minOccurs='0' name='abonentInfo' type='xs:string'/>
+     <xs:element minOccurs='0' name='customerAccountId' type='xs:int'/>
+     <xs:element minOccurs='0' name='helperAccountId' type='xs:int'/>
+     <xs:element minOccurs='0' name='paymentType' type='tns:PaymentType'/>
+     <xs:element minOccurs='0' name='paymentAmount' type='ns1:Amount'/>
+     <xs:element minOccurs='0' name='triggerAmount' type='ns1:Amount'/>
+     <xs:element minOccurs='0' name='maxPaymentAmount' type='ns1:Amount'/>
+     <xs:element minOccurs='0' name='tariffPaymentControlDays' type='xs:int'/>
+     <xs:element minOccurs='0' name='cronSchedule' type='tns:CronSchedule'/>
+     <xs:element minOccurs='0' name='amountLimitExceedAction' type='tns:AmountLimitExceedAction'/>
+     <xs:element minOccurs='0' name='priority' type='xs:int'/>
+     <xs:element minOccurs='0' name='lastDirectDebitExecutionStatus' type='xs:int'/>
+     <xs:element minOccurs='0' name='amountToBePaidOnLastExecution' type='ns1:Amount'/>
+     <xs:element minOccurs='0' name='lastSuccessfulExecutionDate' type='xs:dateTime'/>
+     <xs:element minOccurs='0' name='lastSuccessfulExecutionAmount' type='ns1:Amount'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='CronSchedule'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='monthDays' nillable='true' type='xs:boolean'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='months' nillable='true' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='scheduleType' type='tns:ScheduleType'/>
+     <xs:element minOccurs='0' name='weekDay' type='xs:int'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='weekDays' nillable='true' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='weekPosition' type='xs:int'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='DebtVerifyInfo'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='status' type='tns:AbonentVerifyStatus'/>
+     <xs:element minOccurs='0' name='message' type='xs:string'/>
+     <xs:element minOccurs='0' name='abonentInfo' type='xs:string'/>
+     <xs:element name='debt' type='xs:float'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='paymentProducts' type='tns:PaymentProduct'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' nillable='true' ref='ns1:AdditionalParams'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='PaymentList'>
+    <xs:sequence>
+     <xs:element name='paymentListId' type='xs:int'/>
+     <xs:element name='customer' type='ns1:Customer'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='entries' nillable='true' type='tns:PaymentListEntry'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='PaymentListEntry'>
+    <xs:complexContent>
+     <xs:extension base='tns:DebtVerifyInfo'>
+      <xs:sequence>
+       <xs:element name='paymentListEntryId' type='xs:int'/>
+       <xs:element minOccurs='0' name='paymentProduct' type='tns:PaymentProduct'/>
+       <xs:element minOccurs='0' name='paymentIdentifier' type='xs:string'/>
+       <xs:element minOccurs='0' name='treasuryCode' type='xs:string'/>
+       <xs:element minOccurs='0' name='description' type='xs:string'/>
+       <xs:element minOccurs='0' name='isOwnPaymentIdentifier' type='xs:boolean'/>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:simpleType name='PaymentType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='FIXED'/>
+     <xs:enumeration value='VARIABLE'/>
+     <xs:enumeration value='BOTH'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='VariablePaymentType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='PAY_DEBT_WITHOUT_LIMIT'/>
+     <xs:enumeration value='PAY_DEBT_WITH_LIMIT'/>
+     <xs:enumeration value='PAY_BALANCE'/>
+     <xs:enumeration value='TARIFF_PRE_PAYMENT'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='PaymentStatus'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='PRE_CREATE'/>
+     <xs:enumeration value='CREATED'/>
+     <xs:enumeration value='COLLECTED'/>
+     <xs:enumeration value='COLLECT_REJECTED'/>
+     <xs:enumeration value='PENDING'/>
+     <xs:enumeration value='PERFORMING'/>
+     <xs:enumeration value='PERFORMED'/>
+     <xs:enumeration value='PERFORMED_MANUALLY'/>
+     <xs:enumeration value='FAILED'/>
+     <xs:enumeration value='REJECTED'/>
+     <xs:enumeration value='DELETED'/>
+     <xs:enumeration value='CANCELED'/>
+     <xs:enumeration value='CANCELED_MANUALLY'/>
+     <xs:enumeration value='CANCELLING'/>
+     <xs:enumeration value='CANCEL_FAILED'/>
+     <xs:enumeration value='MANUAL_CANCEL_REQUIRED'/>
+     <xs:enumeration value='REFUND_REQUESTED'/>
+     <xs:enumeration value='REFUNDED'/>
+     <xs:enumeration value='REFUND_FAILED'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='PaymentTransactionsStatus'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='IN_PORGRESS'/>
+     <xs:enumeration value='PERFORMED'/>
+     <xs:enumeration value='REJECTED'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='ScheduleType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='DAILY'/>
+     <xs:enumeration value='MONTHLY'/>
+     <xs:enumeration value='LAST_DAY_OF_MONTH'/>
+     <xs:enumeration value='EVERYDAY'/>
+     <xs:enumeration value='EVERY_X_DAY'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='AmountLimitExceedAction'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='DO_NOT_PAY'/>
+     <xs:enumeration value='PAY_LIMIT'/>
+    </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name='AbonentVerifyStatus'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='VERIFYING'/>
+     <xs:enumeration value='VERIFY_SUCCEEDED'/>
+     <xs:enumeration value='VERIFY_FAILED'/>
+     <xs:enumeration value='UNABLE_TO_VERIFY'/>
+     <xs:enumeration value='UNVERIFIED'/>
+     <xs:enumeration value='DO_NOT_VERIFY'/>
+     <xs:enumeration value='CONNECTIVITY_FAILURE'/>
+     <xs:enumeration value='VERIFY_SUCCEEDED_OFFLINE'/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:schema>
+ </types>
+ <message name='PaymentServices_getPaymentProductIcon'>
+  <part element='tns:getPaymentProductIcon' name='getPaymentProductIcon'></part>
+ </message>
+ <message name='PaymentServices_getClientChargeRates'>
+  <part element='tns:getClientChargeRates' name='getClientChargeRates'></part>
+ </message>
+ <message name='PaymentServices_getDirectDebitOrdersResponse'>
+  <part element='tns:getDirectDebitOrdersResponse' name='getDirectDebitOrdersResponse'></part>
+ </message>
+ <message name='PaymentServices_cancelDirectDebitOrder'>
+  <part element='tns:cancelDirectDebitOrder' name='cancelDirectDebitOrder'></part>
+ </message>
+ <message name='PaymentServices_debtVerify'>
+  <part element='tns:debtVerify' name='debtVerify'></part>
+ </message>
+ <message name='PaymentServices_addPaymentListEntry'>
+  <part element='tns:addPaymentListEntry' name='addPaymentListEntry'></part>
+ </message>
+ <message name='PaymentServices_deletePaymentListEntryResponse'>
+  <part element='tns:deletePaymentListEntryResponse' name='deletePaymentListEntryResponse'></part>
+ </message>
+ <message name='PaymentServices_getPaymentInfoResponse'>
+  <part element='tns:getPaymentInfoResponse' name='getPaymentInfoResponse'></part>
+ </message>
+ <message name='PaymentServices_editDirectDebitOrder'>
+  <part element='tns:editDirectDebitOrder' name='editDirectDebitOrder'></part>
+ </message>
+ <message name='PaymentServices_getServiceProviderIcon'>
+  <part element='tns:getServiceProviderIcon' name='getServiceProviderIcon'></part>
+ </message>
+ <message name='PaymentServices_getPaymentProductsResponse'>
+  <part element='tns:getPaymentProductsResponse' name='getPaymentProductsResponse'></part>
+ </message>
+ <message name='PaymentServices_getPaymentGroupIconResponse'>
+  <part element='tns:getPaymentGroupIconResponse' name='getPaymentGroupIconResponse'></part>
+ </message>
+ <message name='PaymentServices_addPaymentListResponse'>
+  <part element='tns:addPaymentListResponse' name='addPaymentListResponse'></part>
+ </message>
+ <message name='PaymentServices_getCustomerPaymentList'>
+  <part element='tns:getCustomerPaymentList' name='getCustomerPaymentList'></part>
+ </message>
+ <message name='PaymentServices_getClientChargeRatesResponse'>
+  <part element='tns:getClientChargeRatesResponse' name='getClientChargeRatesResponse'></part>
+ </message>
+ <message name='PaymentServices_getDirectDebitOrderSummaryAmountsResponse'>
+  <part element='tns:getDirectDebitOrderSummaryAmountsResponse' name='getDirectDebitOrderSummaryAmountsResponse'></part>
+ </message>
+ <message name='PaymentServices_editPaymentListEntryResponse'>
+  <part element='tns:editPaymentListEntryResponse' name='editPaymentListEntryResponse'></part>
+ </message>
+ <message name='PaymentServices_getCustomerPaymentListResponse'>
+  <part element='tns:getCustomerPaymentListResponse' name='getCustomerPaymentListResponse'></part>
+ </message>
+ <message name='PaymentServices_getPaymentGroups'>
+  <part element='tns:getPaymentGroups' name='getPaymentGroups'></part>
+ </message>
+ <message name='PaymentServices_anonymousDebtVerify'>
+  <part element='tns:anonymousDebtVerify' name='anonymousDebtVerify'></part>
+ </message>
+ <message name='PaymentServices_getPaymentRegions'>
+  <part element='tns:getPaymentRegions' name='getPaymentRegions'></part>
+ </message>
+ <message name='PaymentServices_getDirectDebitOrders'>
+  <part element='tns:getDirectDebitOrders' name='getDirectDebitOrders'></part>
+ </message>
+ <message name='PaymentServices_editDirectDebitOrderResponse'>
+  <part element='tns:editDirectDebitOrderResponse' name='editDirectDebitOrderResponse'></part>
+ </message>
+ <message name='PaymentServices_getAllClientDirectDebitOrdersSummaryAmounts'>
+  <part element='tns:getAllClientDirectDebitOrdersSummaryAmounts' name='getAllClientDirectDebitOrdersSummaryAmounts'></part>
+ </message>
+ <message name='PaymentServices_editPaymentListEntry'>
+  <part element='tns:editPaymentListEntry' name='editPaymentListEntry'></part>
+ </message>
+ <message name='PaymentServices_getPaymentRegionsResponse'>
+  <part element='tns:getPaymentRegionsResponse' name='getPaymentRegionsResponse'></part>
+ </message>
+ <message name='PaymentServices_addDirectDebitOrder'>
+  <part element='tns:addDirectDebitOrder' name='addDirectDebitOrder'></part>
+ </message>
+ <message name='PaymentServices_getPaymentInfo'>
+  <part element='tns:getPaymentInfo' name='getPaymentInfo'></part>
+ </message>
+ <message name='PaymentServices_anonymousDebtVerifyResponse'>
+  <part element='tns:anonymousDebtVerifyResponse' name='anonymousDebtVerifyResponse'></part>
+ </message>
+ <message name='PaymentServices_addDirectDebitOrderResponse'>
+  <part element='tns:addDirectDebitOrderResponse' name='addDirectDebitOrderResponse'></part>
+ </message>
+ <message name='PaymentServices_getServiceProviders'>
+  <part element='tns:getServiceProviders' name='getServiceProviders'></part>
+ </message>
+ <message name='PaymentServices_getPaymentGroupsResponse'>
+  <part element='tns:getPaymentGroupsResponse' name='getPaymentGroupsResponse'></part>
+ </message>
+ <message name='PaymentServices_addPaymentList'>
+  <part element='tns:addPaymentList' name='addPaymentList'></part>
+ </message>
+ <message name='PaymentServices_debtVerifyResponse'>
+  <part element='tns:debtVerifyResponse' name='debtVerifyResponse'></part>
+ </message>
+ <message name='PaymentServices_getServiceProvidersResponse'>
+  <part element='tns:getServiceProvidersResponse' name='getServiceProvidersResponse'></part>
+ </message>
+ <message name='PaymentServices_getAllClientDirectDebitOrdersSummaryAmountsResponse'>
+  <part element='tns:getAllClientDirectDebitOrdersSummaryAmountsResponse' name='getAllClientDirectDebitOrdersSummaryAmountsResponse'></part>
+ </message>
+ <message name='PaymentServices_getPaymentGroupIcon'>
+  <part element='tns:getPaymentGroupIcon' name='getPaymentGroupIcon'></part>
+ </message>
+ <message name='PaymentServices_cancelDirectDebitOrderResponse'>
+  <part element='tns:cancelDirectDebitOrderResponse' name='cancelDirectDebitOrderResponse'></part>
+ </message>
+ <message name='PaymentServices_getPaymentCommission'>
+  <part element='tns:getPaymentCommission' name='getPaymentCommission'></part>
+ </message>
+ <message name='PaymentServices_getServiceProviderIconResponse'>
+  <part element='tns:getServiceProviderIconResponse' name='getServiceProviderIconResponse'></part>
+ </message>
+ <message name='PaymentServices_addPaymentListEntryResponse'>
+  <part element='tns:addPaymentListEntryResponse' name='addPaymentListEntryResponse'></part>
+ </message>
+ <message name='PaymentServices_getPaymentProducts'>
+  <part element='tns:getPaymentProducts' name='getPaymentProducts'></part>
+ </message>
+ <message name='PaymentServices_deletePaymentListEntry'>
+  <part element='tns:deletePaymentListEntry' name='deletePaymentListEntry'></part>
+ </message>
+ <message name='PaymentServices_getDirectDebitOrderSummaryAmounts'>
+  <part element='tns:getDirectDebitOrderSummaryAmounts' name='getDirectDebitOrderSummaryAmounts'></part>
+ </message>
+ <message name='PaymentServices_getPaymentProductIconResponse'>
+  <part element='tns:getPaymentProductIconResponse' name='getPaymentProductIconResponse'></part>
+ </message>
+ <message name='PaymentServices_requestPayment'>
+  <part element='tns:requestPayment' name='requestPayment'></part>
+ </message>
+ <message name='PaymentServices_requestPaymentResponse'>
+  <part element='tns:requestPaymentResponse' name='requestPaymentResponse'></part>
+ </message>
+ <message name='PaymentServices_getPaymentCommissionResponse'>
+  <part element='tns:getPaymentCommissionResponse' name='getPaymentCommissionResponse'></part>
+ </message>
+ <portType name='PaymentServices'>
+  <operation name='addDirectDebitOrder' parameterOrder='addDirectDebitOrder'>
+   <input message='tns:PaymentServices_addDirectDebitOrder'></input>
+   <output message='tns:PaymentServices_addDirectDebitOrderResponse'></output>
+  </operation>
+  <operation name='addPaymentList' parameterOrder='addPaymentList'>
+   <input message='tns:PaymentServices_addPaymentList'></input>
+   <output message='tns:PaymentServices_addPaymentListResponse'></output>
+  </operation>
+  <operation name='addPaymentListEntry' parameterOrder='addPaymentListEntry'>
+   <input message='tns:PaymentServices_addPaymentListEntry'></input>
+   <output message='tns:PaymentServices_addPaymentListEntryResponse'></output>
+  </operation>
+  <operation name='anonymousDebtVerify' parameterOrder='anonymousDebtVerify'>
+   <input message='tns:PaymentServices_anonymousDebtVerify'></input>
+   <output message='tns:PaymentServices_anonymousDebtVerifyResponse'></output>
+  </operation>
+  <operation name='cancelDirectDebitOrder' parameterOrder='cancelDirectDebitOrder'>
+   <input message='tns:PaymentServices_cancelDirectDebitOrder'></input>
+   <output message='tns:PaymentServices_cancelDirectDebitOrderResponse'></output>
+  </operation>
+  <operation name='debtVerify' parameterOrder='debtVerify'>
+   <input message='tns:PaymentServices_debtVerify'></input>
+   <output message='tns:PaymentServices_debtVerifyResponse'></output>
+  </operation>
+  <operation name='deletePaymentListEntry' parameterOrder='deletePaymentListEntry'>
+   <input message='tns:PaymentServices_deletePaymentListEntry'></input>
+   <output message='tns:PaymentServices_deletePaymentListEntryResponse'></output>
+  </operation>
+  <operation name='editDirectDebitOrder' parameterOrder='editDirectDebitOrder'>
+   <input message='tns:PaymentServices_editDirectDebitOrder'></input>
+   <output message='tns:PaymentServices_editDirectDebitOrderResponse'></output>
+  </operation>
+  <operation name='editPaymentListEntry' parameterOrder='editPaymentListEntry'>
+   <input message='tns:PaymentServices_editPaymentListEntry'></input>
+   <output message='tns:PaymentServices_editPaymentListEntryResponse'></output>
+  </operation>
+  <operation name='getAllClientDirectDebitOrdersSummaryAmounts' parameterOrder='getAllClientDirectDebitOrdersSummaryAmounts'>
+   <input message='tns:PaymentServices_getAllClientDirectDebitOrdersSummaryAmounts'></input>
+   <output message='tns:PaymentServices_getAllClientDirectDebitOrdersSummaryAmountsResponse'></output>
+  </operation>
+  <operation name='getClientChargeRates' parameterOrder='getClientChargeRates'>
+   <input message='tns:PaymentServices_getClientChargeRates'></input>
+   <output message='tns:PaymentServices_getClientChargeRatesResponse'></output>
+  </operation>
+  <operation name='getCustomerPaymentList' parameterOrder='getCustomerPaymentList'>
+   <input message='tns:PaymentServices_getCustomerPaymentList'></input>
+   <output message='tns:PaymentServices_getCustomerPaymentListResponse'></output>
+  </operation>
+  <operation name='getDirectDebitOrderSummaryAmounts' parameterOrder='getDirectDebitOrderSummaryAmounts'>
+   <input message='tns:PaymentServices_getDirectDebitOrderSummaryAmounts'></input>
+   <output message='tns:PaymentServices_getDirectDebitOrderSummaryAmountsResponse'></output>
+  </operation>
+  <operation name='getDirectDebitOrders' parameterOrder='getDirectDebitOrders'>
+   <input message='tns:PaymentServices_getDirectDebitOrders'></input>
+   <output message='tns:PaymentServices_getDirectDebitOrdersResponse'></output>
+  </operation>
+  <operation name='getPaymentCommission' parameterOrder='getPaymentCommission'>
+   <input message='tns:PaymentServices_getPaymentCommission'></input>
+   <output message='tns:PaymentServices_getPaymentCommissionResponse'></output>
+  </operation>
+  <operation name='getPaymentGroupIcon' parameterOrder='getPaymentGroupIcon'>
+   <input message='tns:PaymentServices_getPaymentGroupIcon'></input>
+   <output message='tns:PaymentServices_getPaymentGroupIconResponse'></output>
+  </operation>
+  <operation name='getPaymentGroups' parameterOrder='getPaymentGroups'>
+   <input message='tns:PaymentServices_getPaymentGroups'></input>
+   <output message='tns:PaymentServices_getPaymentGroupsResponse'></output>
+  </operation>
+  <operation name='getPaymentInfo' parameterOrder='getPaymentInfo'>
+   <input message='tns:PaymentServices_getPaymentInfo'></input>
+   <output message='tns:PaymentServices_getPaymentInfoResponse'></output>
+  </operation>
+  <operation name='getPaymentProductIcon' parameterOrder='getPaymentProductIcon'>
+   <input message='tns:PaymentServices_getPaymentProductIcon'></input>
+   <output message='tns:PaymentServices_getPaymentProductIconResponse'></output>
+  </operation>
+  <operation name='getPaymentProducts' parameterOrder='getPaymentProducts'>
+   <input message='tns:PaymentServices_getPaymentProducts'></input>
+   <output message='tns:PaymentServices_getPaymentProductsResponse'></output>
+  </operation>
+  <operation name='getPaymentRegions' parameterOrder='getPaymentRegions'>
+   <input message='tns:PaymentServices_getPaymentRegions'></input>
+   <output message='tns:PaymentServices_getPaymentRegionsResponse'></output>
+  </operation>
+  <operation name='getServiceProviderIcon' parameterOrder='getServiceProviderIcon'>
+   <input message='tns:PaymentServices_getServiceProviderIcon'></input>
+   <output message='tns:PaymentServices_getServiceProviderIconResponse'></output>
+  </operation>
+  <operation name='getServiceProviders' parameterOrder='getServiceProviders'>
+   <input message='tns:PaymentServices_getServiceProviders'></input>
+   <output message='tns:PaymentServices_getServiceProvidersResponse'></output>
+  </operation>
+  <operation name='requestPayment' parameterOrder='requestPayment'>
+   <input message='tns:PaymentServices_requestPayment'></input>
+   <output message='tns:PaymentServices_requestPaymentResponse'></output>
+  </operation>
+ </portType>
+ <binding name='PaymentServicesBinding' type='tns:PaymentServices'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='addDirectDebitOrder'>
+   <soap:operation soapAction='http://ps.ups.azry.com/addDirectDebitOrder'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='addPaymentList'>
+   <soap:operation soapAction='http://ps.ups.azry.com/addPaymentList'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='addPaymentListEntry'>
+   <soap:operation soapAction='http://ps.ups.azry.com/addPaymentListEntry'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='anonymousDebtVerify'>
+   <soap:operation soapAction='http://ps.ups.azry.com/anonymousDebtVerify'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='cancelDirectDebitOrder'>
+   <soap:operation soapAction='http://ps.ups.azry.com/cancelDirectDebitOrder'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='debtVerify'>
+   <soap:operation soapAction='http://ps.ups.azry.com/debtVerify'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='deletePaymentListEntry'>
+   <soap:operation soapAction='http://ps.ups.azry.com/deletePaymentListEntry'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='editDirectDebitOrder'>
+   <soap:operation soapAction='http://ps.ups.azry.com/editDirectDebitOrder'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='editPaymentListEntry'>
+   <soap:operation soapAction='http://ps.ups.azry.com/editPaymentListEntry'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getAllClientDirectDebitOrdersSummaryAmounts'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getAllClientDirectDebitOrdersSummaryAmounts'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getClientChargeRates'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getClientChargeRates'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getCustomerPaymentList'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getCustomerPaymentList'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getDirectDebitOrderSummaryAmounts'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getDirectDebitOrderSummaryAmounts'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getDirectDebitOrders'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getDirectDebitOrders'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getPaymentCommission'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getPaymentCommission'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getPaymentGroupIcon'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getPaymentGroupIcon'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getPaymentGroups'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getPaymentGroups'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getPaymentInfo'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getPaymentInfo'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getPaymentProductIcon'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getPaymentProductIcon'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getPaymentProducts'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getPaymentProducts'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getPaymentRegions'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getPaymentRegions'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getServiceProviderIcon'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getServiceProviderIcon'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getServiceProviders'>
+   <soap:operation soapAction='http://ps.ups.azry.com/getServiceProviders'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='requestPayment'>
+   <soap:operation soapAction='http://ps.ups.azry.com/requestPayment'/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+ </binding>
+ <service name='PaymentWebServices'>
+  <port binding='tns:PaymentServicesBinding' name='PaymentServicesBeanPort'>
+   <soap:address location='http://Gio-Javakhadze:9080/PSWS/PaymentServicesBean'/>
+  </port>
+ </service>
+</definitions>

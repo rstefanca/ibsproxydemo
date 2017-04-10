@@ -4,26 +4,12 @@ ribbon:
 
 zuul:
   routes:
-
     paymentGroups:
       path: /tbcibs-play/**/paymentGroups
       url: http://localhost:8082
     paymentRegions:
       path: /tbcibs-play/**/paymentRegions
       url: http://localhost:8082
-    billPayments:
-      sensitiveHeaders:
-      path: /tbcibs-play/**/billPayments
-      url: http://localhost:8082
-    billPaymentsOrder:
-      sensitiveHeaders:
-      path: /tbcibs-play/**/billPayments/order
-      url: http://localhost:8082
-    ui:
-      path: /dev/**
-      sensitiveHeaders:
-      strip-prefix: false
-      url: http://localhost:9000
 
     legacy:
       sensitiveHeaders:
