@@ -42,14 +42,20 @@ public class UpsController {
 	@Autowired
 	private ObjectMapper objectMapper;
 
+	/**
+	 * Returns String representing Payment Groups JSON. String is used on purpose to cache already
+	 * serialized result instead serializing cached object each method invocation. It saves a few
+	 * cpu cycles :)
+	 *
+	 * @return JSON string
+	 * @throws Exception if serialization fails
+	 */
 	@RequestMapping(method = GET, value = "billPayments/paymentGroups")
 	@Cacheable({"paymentGroups"})
 	public String getPaymentGroups() throws Exception {
 		log.info("getPaymentGroups");
 		Collection<PaymentGroup> paymentGroups = frequentPaymentClient.getPaymentGroups();
 		return objectMapper.writeValueAsString(paymentGroups);
-
-		//return "[{\"id\":61,\"name\":\"Utility Payments\"},{\"id\":83796,\"name\":\"Telephone/Internet/TV\"},{\"id\":59635,\"name\":\"Gambling\"},{\"id\":71427,\"name\":\"Shipping & Post\"},{\"id\":152,\"name\":\"Insurance & Pension\"},{\"id\":277964,\"name\":\"Education\"},{\"id\":277966,\"name\":\"Microfinance Companies\"},{\"id\":241849,\"name\":\"Charity\"},{\"id\":154,\"name\":\"Other\"}]";
 	}
 
 	@RequestMapping(method = GET, value = "billPayments/paymentRegions")
