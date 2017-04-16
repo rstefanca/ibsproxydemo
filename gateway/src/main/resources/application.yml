@@ -1,21 +1,33 @@
-ribbon:
-  eureka:
-    enabled: false
+
+
+utility-payment:
+  ribbon:
+    eureka:
+      enabled: true
+  url: http://utility-payment
 
 zuul:
   routes:
     paymentGroups:
       path: /tbcibs-play/**/paymentGroups
-      url: http://localhost:8082
+      strip-prefix: true
+      serviceId: utility-payment
     paymentRegions:
       path: /tbcibs-play/**/paymentRegions
-      url: http://localhost:8082
-
+      serviceId: utility-payment
     legacy:
       sensitiveHeaders:
-      path: /**
-      strip-prefix: false
-      url: http://10.2.11.13:9082
+      path: /tbcibs-play/**
+      strip-prefix: true
+      url: http://localhost:8090
+    legacy-ui:
+       path: /tbcibs.server.angular/**
+       strip-prefix: false
+       url: http://10.2.11.13:9082
 
 server:
   port: 8081
+
+
+
+
