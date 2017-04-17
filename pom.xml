@@ -12,6 +12,7 @@
         <module>gateway</module>
         <module>utility-payment</module>
         <module>eureka-server</module>
+        <module>smart-club</module>
     </modules>
 
 

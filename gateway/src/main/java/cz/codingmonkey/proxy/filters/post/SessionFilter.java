@@ -24,19 +24,20 @@ public class SessionFilter extends ZuulFilter {
 
 	@Override
 	public boolean shouldFilter() {
-		return true;
+		RequestContext ctx = RequestContext.getCurrentContext();
+		return ctx.getRequest().getRequestURL().toString().endsWith("/auth/v1/login");
 	}
 
 	@Override
 	public Object run() {
 		RequestContext ctx = RequestContext.getCurrentContext();
-		if (ctx.getRequest().getRequestURL().toString().endsWith("delegate/rest/auth/v1/login")) {
-			ctx.getZuulResponseHeaders().stream()
-					.filter(headerTpl -> "Set-Cookie".equals(headerTpl.first()))
-					.findFirst()
-					.flatMap(pair -> parseCookie(pair.second()))
-					.ifPresent(this::saveSessionCookie);
-		}
+
+		ctx.getZuulResponseHeaders().stream()
+				.filter(headerTpl -> "Set-Cookie".equals(headerTpl.first()))
+				.findFirst()
+				.flatMap(pair -> parseCookie(pair.second()))
+				.ifPresent(this::saveSessionCookie);
+
 
 		return null;
 	}

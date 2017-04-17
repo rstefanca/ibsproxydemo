@@ -6,6 +6,12 @@ utility-payment:
       enabled: true
   url: http://utility-payment
 
+smart-club:
+  ribbon:
+    eureka:
+      enabled: true
+  url: http://smart-club
+
 zuul:
   routes:
     paymentGroups:
@@ -15,11 +21,15 @@ zuul:
     paymentRegions:
       path: /tbcibs-play/**/paymentRegions
       serviceId: utility-payment
+    smartClub:
+      path: /tbcibs-play/delegate/**/smartclub/v1/*
+      strip-prefix: true
+      serviceId: smart-club
     legacy:
       sensitiveHeaders:
       path: /tbcibs-play/**
-      strip-prefix: true
-      url: http://localhost:8090
+      strip-prefix: false
+      url: http://10.2.11.13:9082
     legacy-ui:
        path: /tbcibs.server.angular/**
        strip-prefix: false

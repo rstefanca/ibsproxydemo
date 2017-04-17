@@ -1,7 +1,5 @@
 package cz.codingmonkey.utiltitypayment.conf;
 
-import cz.codingmonkey.utiltitypayment.services.FrequentPaymentClient;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -12,8 +10,6 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 @Configuration
 public class WsConfiguration {
 
-	@Value("${ups.service.url}")
-	private String upsServiceUrl;
 
 	@Bean
 	public Jaxb2Marshaller marshaller() {
@@ -24,12 +20,5 @@ public class WsConfiguration {
 		return marshaller;
 	}
 
-	@Bean
-	public FrequentPaymentClient quoteClient(Jaxb2Marshaller marshaller) {
-		FrequentPaymentClient client = new FrequentPaymentClient();
-		client.setDefaultUri(upsServiceUrl);
-		client.setMarshaller(marshaller);
-		client.setUnmarshaller(marshaller);
-		return client;
-	}
+
 }
