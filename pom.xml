@@ -14,6 +14,7 @@
         <module>eureka-server</module>
         <module>smart-club</module>
         <module>config-server</module>
+        <module>admin-app</module>
     </modules>
 
 
