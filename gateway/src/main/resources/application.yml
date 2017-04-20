@@ -1,4 +1,6 @@
-
+ribon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
 
 utility-payment:
   ribbon:
@@ -22,14 +24,15 @@ zuul:
       path: /tbcibs-play/**/paymentRegions
       serviceId: utility-payment
     smartClub:
+      sensitiveHeaders:
       path: /tbcibs-play/delegate/**/smartclub/v1/*
       strip-prefix: true
       serviceId: smart-club
     legacy:
       sensitiveHeaders:
       path: /tbcibs-play/**
-      strip-prefix: false
-      url: http://10.2.11.13:9082
+      strip-prefix: true
+      url: http://localhost:8090
     legacy-ui:
        path: /tbcibs.server.angular/**
        strip-prefix: false
@@ -37,6 +40,9 @@ zuul:
 
 server:
   port: 8081
+  compression:
+    enabled: true
+    mime-types: text/html,application/json
 
 
 

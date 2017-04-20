@@ -38,7 +38,6 @@ public class SessionFilter extends ZuulFilter {
 				.flatMap(pair -> parseCookie(pair.second()))
 				.ifPresent(this::saveSessionCookie);
 
-
 		return null;
 	}
 
@@ -47,7 +46,7 @@ public class SessionFilter extends ZuulFilter {
 		return cookies.stream()
 				.filter(c -> "JSESSIONID".equals(c.getName()))
 				.findFirst()
-				.map(c -> new Pair<String, String>(c.getName(), c.getValue()));
+				.map(c -> new Pair<>(c.getName(), c.getValue()));
 
 	}
 

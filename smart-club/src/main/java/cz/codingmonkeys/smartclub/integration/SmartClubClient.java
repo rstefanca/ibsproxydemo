@@ -8,6 +8,7 @@ import cz.codingmonkeys.smartclub.integration.jaxb.SmartClubFinancialProfile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
@@ -19,6 +20,7 @@ import javax.annotation.PostConstruct;
  */
 @Slf4j
 @Component
+@RefreshScope
 public class SmartClubClient extends WebServiceGatewaySupport {
 
 	@Value("${smartclub.service.uri}")
@@ -30,12 +32,13 @@ public class SmartClubClient extends WebServiceGatewaySupport {
 
 	@HystrixCommand
 	public SmartClubInfo getSmartClubInfo(long clientId) {
+		log.info("Getting Smart Club Info for client {}", clientId);
 		GetSmartClubInfoRequest request = new GetSmartClubInfoRequest();
 		request.setClientId(clientId);
 
 		GetSmartClubInfoResponse response = (GetSmartClubInfoResponse) getWebServiceTemplate().marshalSendAndReceive(request);
 		SmartClubFinancialProfile smartClubFinancialProfile = response.getSmartClubFinancialProfile();
-
+		log.debug("Smart Club Info for client {} received", clientId);
 		return new SmartClubInfo(smartClubFinancialProfile.isIsMember(), smartClubFinancialProfile.getPoints());
 	}
 

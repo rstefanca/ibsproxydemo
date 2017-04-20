@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigDecimal;
-
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
@@ -22,6 +20,6 @@ public class SmartClubController {
 
 	@RequestMapping(method = GET, value = "info")
 	public SmartClubInfo smartClubInfo(@CookieValue("JSESSIONID") String sessionId) {
-		return new SmartClubInfo(true, BigDecimal.valueOf(1234));
+		return delegate.getSmartClubInfo(sessionId);
 	}
 }
